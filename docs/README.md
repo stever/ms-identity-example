@@ -146,7 +146,7 @@ Open the project in your IDE (like Visual Studio or Visual Studio Code) to confi
 Open the `App\authConfig.js` file. Then:
 
 1. Find the key `Enter_the_Application_Id_Here` and replace the existing value with the application ID (clientId) of the `ms-identity-javascript-c3s1-spa` application copied from the Azure portal.
-1. Find the key `Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here` and replace the existing value with `https://login.microsoftonline.com/<your-tenant-id>`.
+1. Find the key `Enter_the_Tenant_Info_Here` and replace the existing value with `<your-tenant-id>`.
 1. Find the key `Enter_the_Redirect_Uri_Here` and replace the existing value with the base address of the `ms-identity-javascript-tutorial-c3s1-spa` application (by default `http://localhost:3000`).
 1. Find the key `Enter_the_Web_Api_Uri_Here` and replace the existing value with the coordinates of your web API (by default `http://localhost:5000/api`).
 1. Find the key `Enter_the_Web_Api_Scope_Here` and replace the existing value with the scopes for your web API, like `api://e767d418-b80b-4568-9754-557f40697fc5/access_as_user`. You can copy this from the **Expose an API** blade of the web APIs registration.
@@ -154,13 +154,8 @@ Open the `App\authConfig.js` file. Then:
 ## Running the sample
 
 ```console
-    cd ms-identity-javascript-tutorial
-    cd 3-Authorization-II/1-call-api
-    cd API
-    npm start
-    cd ..
-    cd SPA
-    npm start
+    cd ms-identity-example
+    npm dev
 ```
 
 ## Explore the sample
