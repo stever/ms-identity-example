@@ -42,18 +42,24 @@ app.use((req, res, next) => {
 
 // API endpoint exposed
 app.get('/api',
-    passport.authenticate('oauth-bearer', {session: false}),
-    (req, res) => {
-        console.log('Validated claims: ', req.authInfo);
+    [
+        function (req, res, next) {
+            console.log(req.headers['authorization']);
+            next();
+        },
+        passport.authenticate('oauth-bearer', {session: false}),
+        (req, res) => {
+            console.log('Validated claims: ', req.authInfo);
 
-        // Service relies on the name claim.  
-        res.status(200).json({
-            'name': req.authInfo['name'],
-            'issued-by': req.authInfo['iss'],
-            'issued-for': req.authInfo['aud'],
-            'scope': req.authInfo['scp']
-        });
-    }
+            // Service relies on the name claim.
+            res.status(200).json({
+                'name': req.authInfo['name'],
+                'issued-by': req.authInfo['iss'],
+                'issued-for': req.authInfo['aud'],
+                'scope': req.authInfo['scp']
+            });
+        },
+    ]
 );
 
 const port = process.env.PORT || 5000;
