@@ -30,8 +30,6 @@ This sample demonstrates a Vanilla JavaScript single-page application (SPA) that
 
 | File/folder           | Description                                |
 |-----------------------|--------------------------------------------|
-| `` | Contains Powershell scripts to automate app registration. |
-| `App/authPopup.js`    | Main authentication logic resides here (using Popup flow). |
 | `App/authRedirect.js` | Use this instead of `authPopup.js` for authentication with redirect flow. |
 | `App/authConfig.js`   | Contains configuration parameters for the sample. |
 | `SPA/server.js`           | Simple Node server for `index.html`.        |
@@ -65,50 +63,13 @@ or download and extract the repository .zip file.
 ### Step 2: Install project dependencies
 
 ```console
-    cd ms-identity-javascript-tutorial
-    cd 3-Authorization-II/1-call-api
-    cd API
-    npm install
-    cd..
-    cd SPA
+    cd ms-identity-example
     npm install
 ```
 
 ## Registration
 
 ### Register the sample application(s) with your Azure Active Directory tenant
-
-There is one project in this sample. To register it, you can:
-
-- either follow the steps below for manually register your apps
-- or use PowerShell scripts that:
-  - **automatically** creates the Azure AD applications and related objects (passwords, permissions, dependencies) for you.
-  - modify the projects' configuration files.
-
-<details>
-  <summary>Expand this section if you want to use this automation:</summary>
-
-> :warning: If you have never used **Azure AD Powershell** before, we recommend you go through the [App Creation Scripts](./AppCreationScripts.md) once to ensure that your environment is prepared correctly for this step.
-
-1. On Windows, run PowerShell and navigate to the root of the cloned directory.
-1. In PowerShell run:
-
-   ```PowerShell
-   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-   ```
-
-1. Run the script to create your Azure AD application and configure the code of the sample application accordingly.
-1. In PowerShell run:
-
-   ```PowerShell
-   cd .\AppCreationScripts\
-   .\Configure.ps1
-   ```
-
-   > Other ways of running the scripts are described in [App Creation Scripts](./AppCreationScripts.md)
-   > The scripts also provide a guide to automated application registration, configuration and removal which can help in your CI/CD scenarios.
-
-</details>
 
 Follow the steps below to manually walk through the steps to register and configure the applications in the Azure portal.
 
@@ -209,10 +170,6 @@ Open the `App\authConfig.js` file. Then:
 1. Once you authenticate, click the **Call API** button at the center.
 
 ![Screenshot](./screenshot.png)
-
-## We'd love your feedback!
-
-Were we successful in addressing your learning objective? Consider taking a moment to [share your experience with us](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR73pcsbpbxNJuZCMKN0lURpUNDVHTkg2VVhWMTNYUTZEM05YS1hSN01EOSQlQCN0PWcu).
 
 ## About the code
 
