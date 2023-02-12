@@ -24,13 +24,13 @@ This sample demonstrates a Vanilla JavaScript single-page application (SPA) that
 1. The **Access Token** is used as a **bearer** token to *authorize* the user to call the protected web API.
 1. The protected web API responds with the claims in the **Access Token**.
 
-![Overview](./ReadmeFiles/topology_callapi.png)
+![Overview](./topology_callapi.png)
 
 ## Contents
 
 | File/folder           | Description                                |
 |-----------------------|--------------------------------------------|
-| `AppCreationScripts/` | Contains Powershell scripts to automate app registration. |
+| `` | Contains Powershell scripts to automate app registration. |
 | `App/authPopup.js`    | Main authentication logic resides here (using Popup flow). |
 | `App/authRedirect.js` | Use this instead of `authPopup.js` for authentication with redirect flow. |
 | `App/authConfig.js`   | Contains configuration parameters for the sample. |
@@ -88,7 +88,7 @@ There is one project in this sample. To register it, you can:
 <details>
   <summary>Expand this section if you want to use this automation:</summary>
 
-> :warning: If you have never used **Azure AD Powershell** before, we recommend you go through the [App Creation Scripts](./AppCreationScripts/AppCreationScripts.md) once to ensure that your environment is prepared correctly for this step.
+> :warning: If you have never used **Azure AD Powershell** before, we recommend you go through the [App Creation Scripts](./AppCreationScripts.md) once to ensure that your environment is prepared correctly for this step.
 
 1. On Windows, run PowerShell and navigate to the root of the cloned directory.
 1. In PowerShell run:
@@ -105,7 +105,7 @@ There is one project in this sample. To register it, you can:
    .\Configure.ps1
    ```
 
-   > Other ways of running the scripts are described in [App Creation Scripts](./AppCreationScripts/AppCreationScripts.md)
+   > Other ways of running the scripts are described in [App Creation Scripts](./AppCreationScripts.md)
    > The scripts also provide a guide to automated application registration, configuration and removal which can help in your CI/CD scenarios.
 
 </details>
@@ -208,7 +208,7 @@ Open the `App\authConfig.js` file. Then:
 1. Click the **sign-in** button on the top right corner.
 1. Once you authenticate, click the **Call API** button at the center.
 
-![Screenshot](./ReadmeFiles/screenshot.png)
+![Screenshot](./screenshot.png)
 
 ## We'd love your feedback!
 
@@ -335,25 +335,3 @@ Learn more about Microsoft identity platform:
 - [Microsoft identity platform ID Tokens](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
 
 For more information about how OAuth 2.0 protocols work in this scenario and other scenarios, see [Authentication Scenarios for Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios).
-
-## Community Help and Support
-
-Use [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) to get support from the community.
-Ask your questions on Stack Overflow first and browse existing issues to see if someone has asked your question before.
-Make sure that your questions or comments are tagged with [`azure-ad` `azure-ad-b2c` `ms-identity` `msal`].
-
-If you find a bug in the sample, please raise the issue on [GitHub Issues](../../issues).
-
-To provide a recommendation, visit the following [User Voice page](https://feedback.azure.com/forums/169401-azure-active-directory).
-
-## Contributing
-
-If you'd like to contribute to this sample, see [CONTRIBUTING.MD](../../CONTRIBUTING.md).
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-## Code of Conduct
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.

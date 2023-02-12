@@ -21,7 +21,7 @@ This sample demonstrates a Vanilla JavaScript single-page application (SPA) that
 1. The **Access Token** is used as a **bearer** token to *authorize* the user to call the protected Web API.
 1. The protected web API responds with the claims in the **Access Token**.
 
-![Overview](./ReadmeFiles/topology_callapi.png)
+![Overview](./topology_callapi.png)
 
 ## Contents
 
@@ -136,7 +136,7 @@ Locate the sample folder `SPA`, then type:
 1. Click the **sign-in** button on the top right corner.
 1. Once you authenticate, click the **Call API** button at the center.
 
-![Screenshot](./ReadmeFiles/screenshot.png)
+![Screenshot](./screenshot.png)
 
 ## We'd love your feedback!
 
