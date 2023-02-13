@@ -1,18 +1,15 @@
 # Vanilla JavaScript single-page application (SPA) using MSAL.js to authorize users for calling a protected web API on Azure AD
 
  1. [Overview](#overview)
- 1. [Scenario](#scenario)
- 1. [Contents](#contents)
- 1. [Prerequisites](#prerequisites)
- 1. [Setup](#setup)
- 1. [Registration](#registration)
- 1. [Running the sample](#running-the-sample)
- 1. [Explore the sample](#explore-the-sample)
- 1. [About the code](#about-the-code)
- 1. [More information](#more-information)
- 1. [Community Help and Support](#community-help-and-support)
- 1. [Contributing](#contributing)
- 1. [Code of Conduct](#code-of-conduct)
+ 2. [Scenario](#scenario)
+ 3. [Contents](#contents)
+ 4. [Prerequisites](#prerequisites)
+ 5. [Setup](#setup)
+ 6. [Registration](#registration)
+ 7. [Running the sample](#running-the-sample)
+ 8. [Explore the sample](#explore-the-sample)
+ 9. [About the code](#about-the-code)
+ 10. [More information](#more-information)
 
 ## Overview
 
@@ -21,21 +18,21 @@ This sample demonstrates a Vanilla JavaScript single-page application (SPA) that
 ## Scenario
 
 1. The client application uses the **MSAL.js** library to sign-in a user and obtain a JWT **Access Token** from **Azure AD**.
-1. The **Access Token** is used as a **bearer** token to *authorize* the user to call the protected web API.
-1. The protected web API responds with the claims in the **Access Token**.
+2. The **Access Token** is used as a **bearer** token to *authorize* the user to call the protected web API.
+3. The protected web API responds with the claims in the **Access Token**.
 
-![Overview](./topology_callapi.png)
+![Overview](topology_callapi.png)
 
 ## Contents
 
-| File/folder           | Description                                |
-|-----------------------|--------------------------------------------|
+| File/folder           | Description                                                               |
+|-----------------------|---------------------------------------------------------------------------|
 | `App/authRedirect.js` | Use this instead of `authPopup.js` for authentication with redirect flow. |
-| `App/authConfig.js`   | Contains configuration parameters for the sample. |
-| `SPA/server.js`           | Simple Node server for `index.html`.        |
-| `API/process.json`   | Contains configuration parameters for logging via Morgan.  |
-| `API/index.js`   | Main application logic resides here.                     |
-| `API/config.json`   | Contains authentication parameters for the sample. |
+| `App/authConfig.js`   | Contains configuration parameters for the sample.                         |
+| `SPA/server.js`       | Simple Node server for `index.html`.                                      |
+| `API/process.json`    | Contains configuration parameters for logging via Morgan.                 |
+| `API/index.js`        | Main application logic resides here.                                      |
+| `API/config.json`     | Contains authentication parameters for the sample.                        |
 
 ## Prerequisites
 
@@ -166,7 +163,7 @@ Open the `App\authConfig.js` file. Then:
 2. Click the **sign-in** button on the top right corner.
 3. Once you authenticate, click the **Call API** button at the center.
 
-![Screenshot](./screenshot.png)
+![Screenshot](screenshot.png)
 
 ## About the code
 
@@ -250,7 +247,8 @@ On the web API side, [passport-azure-ad](https://github.com/AzureAD/passport-azu
 ```javascript
     app.get('/api', passport.authenticate('oauth-bearer', { session: false }),
         (req, res) => {
-            console.log('Validated claims: ', req.authInfo);
+            console.log('Validated claims: ', req.authInfo)
+        }
     );
 ```
 
