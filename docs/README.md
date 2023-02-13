@@ -66,6 +66,8 @@ or download and extract the repository .zip file.
     npm install
 ```
 
+## Registration
+
 ### Register the sample application(s) with your Azure Active Directory tenant
 
 There are two projects in this sample. Each needs to be separately registered in your Azure AD tenant. 
