@@ -189,11 +189,7 @@ To achieve this, you need to add the **Application Id** of the client app, in th
 ## Running the sample
 
 ```console
-    cd 4-AdvancedGrants/1-call-api-graph/API
-    npm start
-    cd ..
-    cd SPA
-    npm start
+    npm run dev
 ```
 
 ## Explore the sample
