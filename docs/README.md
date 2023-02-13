@@ -153,8 +153,7 @@ Open the `App\authConfig.js` file. Then:
 ## Running the sample
 
 ```console
-    cd ms-identity-example
-    npm dev
+    npm run dev
 ```
 
 ## Explore the sample
