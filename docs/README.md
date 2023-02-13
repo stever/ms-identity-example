@@ -30,7 +30,6 @@ This sample demonstrates a Vanilla JavaScript single-page application (SPA) whic
 
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
-| `AppCreationScripts/` | Contains Powershell scripts to automate app registration. |
 | `App/authPopup.js`    | Main authentication logic resides here (using Popup flow). |
 | `App/authRedirect.js` | Use this instead of `authPopup.js` for authentication with redirect flow. |
 | `App/authConfig.js`   | Contains configuration parameters for the sample. |
@@ -55,7 +54,7 @@ This sample demonstrates a Vanilla JavaScript single-page application (SPA) whic
 From your shell or command line:
 
 ```console
-    git clone https://github.com/Azure-Samples/ms-identity-javascript-tutorial.git
+    git clone https://github.com/stever/ms-identity-example.git
 ```
 
 or download and extract the repository .zip file.
@@ -65,94 +64,62 @@ or download and extract the repository .zip file.
 ### Step 2: Install project dependencies
 
 ```console
-    cd ms-identity-javascript-tutorial
-    cd 4-AdvancedGrants/1-call-api-graph/API
-    npm install
-    cd ..
-    cd SPA
+    cd ms-identity-example
+    git checkout example2
     npm install
 ```
 
 ### Register the sample application(s) with your Azure Active Directory tenant
 
-There are two projects in this sample. Each needs to be separately registered in your Azure AD tenant. To register these projects, you can:
-
-- follow the steps below for manually register your apps
-- or use PowerShell scripts that:
-  - **automatically** creates the Azure AD applications and related objects (passwords, permissions, dependencies) for you.
-  - modify the projects' configuration files.
-
-<details>
-  <summary>Expand this section if you want to use this automation:</summary>
-
-> :warning: If you have never used **Azure AD Powershell** before, we recommend you go through the [App Creation Scripts](./AppCreationScripts/AppCreationScripts.md) once to ensure that your environment is prepared correctly for this step.
-
-1. On Windows, run PowerShell as **Administrator** and navigate to the root of the cloned directory
-1. In PowerShell run:
-
-   ```PowerShell
-   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-   ```
-
-1. Run the script to create your Azure AD application and configure the code of the sample application accordingly.
-1. In PowerShell run:
-
-   ```PowerShell
-   cd .\AppCreationScripts\
-   .\Configure.ps1
-   ```
-
-   > Other ways of running the scripts are described in [App Creation Scripts](./AppCreationScripts/AppCreationScripts.md)
-   > The scripts also provide a guide to automated application registration, configuration and removal which can help in your CI/CD scenarios.
-
-</details>
+There are two projects in this sample. Each needs to be separately registered in your Azure AD tenant. 
+To register these projects, you can follow the steps below for manually register your apps.
 
 ### Choose the Azure AD tenant where you want to create your applications
 
 As a first step you'll need to:
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
-1. If your account is present in more than one Azure AD tenant, select your profile at the top right corner in the menu on top of the page, and then **switch directory** to change your portal session to the desired Azure AD tenant.
+2. If your account is present in more than one Azure AD tenant, select your profile at the top right corner in the menu on top of the page, and then **switch directory** to change your portal session to the desired Azure AD tenant.
 
 ### Register the service app
 
 1. Navigate to the [Azure portal](https://portal.azure.com) and select the **Azure AD** service.
-1. Select the **App Registrations** blade on the left, then select **New registration**.
-1. In the **Register an application page** that appears, enter your application's registration information:
+2. Select the **App Registrations** blade on the left, then select **New registration**.
+3. In the **Register an application page** that appears, enter your application's registration information:
    - In the **Name** section, enter a meaningful application name that will be displayed to users of the app, for example `ms-identity-javascript-tutorial-c4s1-api`.
    - Under **Supported account types**, select **Accounts in this organizational directory only**.
-1. Select **Register** to create the application.
-1. In the app's registration screen, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
-1. Select **Save** to save your changes.
-1. In the app's registration screen, click on the **Certificates & secrets** blade in the left to open the page where we can generate secrets and upload certificates.
-1. In the **Client secrets** section, click on **New client secret**:
+4. Select **Register** to create the application.
+5. In the app's registration screen, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
+6. Select **Save** to save your changes.
+7. In the app's registration screen, click on the **Certificates & secrets** blade in the left to open the page where we can generate secrets and upload certificates.
+8. In the **Client secrets** section, click on **New client secret**:
    - Type a key description (for instance `app secret`),
    - Select one of the available key durations (**In 1 year**, **In 2 years**, or **Never Expires**) as per your security posture.
    - The generated key value will be displayed when you click the **Add** button. Copy the generated value for use in the steps later.
    - You'll need this key later in your code's configuration files. This key value will not be displayed again, and is not retrievable by any other means, so make sure to note it from the Azure portal before navigating to any other screen or blade.
-1. In the app's registration screen, click on the **API permissions** blade in the left to open the page where we add access to the APIs that your application needs.
+9. In the app's registration screen, click on the **API permissions** blade in the left to open the page where we add access to the APIs that your application needs.
    - Click the **Add a permission** button and then,
    - Ensure that the **Microsoft APIs** tab is selected.
    - In the *Commonly used Microsoft APIs* section, click on **Microsoft Graph**
    - In the **Delegated permissions** section, select the **offline_access**, **user.read** in the list. Use the search box if necessary.
    - Click on the **Add permissions** button at the bottom.
-1. In the app's registration screen, select the **Expose an API** blade to the left to open the page where you can declare the parameters to expose this app as an Api for which client applications can obtain [access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) for.
+10. In the app's registration screen, select the **Expose an API** blade to the left to open the page where you can declare the parameters to expose this app as an Api for which client applications can obtain [access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) for.
 The first thing that we need to do is to declare the unique [resource](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) URI that the clients will be using to obtain access tokens for this Api. To declare an resource URI, follow the following steps:
-   - Click `Set` next to the **Application ID URI** to generate a URI that is unique for this app.
-   - For this sample, accept the proposed Application ID URI (api://{clientId}) by selecting **Save**.
-1. All APIs have to publish a minimum of one [scope](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-authorization-code) for the client's to obtain an access token successfully. To publish a scope, follow the following steps:
-   - Select **Add a scope** button open the **Add a scope** screen and Enter the values as indicated below:
-        - For **Scope name**, use `access_as_user`.
-        - Select **Admins and users** options for **Who can consent?**
-        - For **Admin consent display name** type `Access ms-identity-javascript-tutorial-c4s1-api`
-        - For **Admin consent description** type `Allows the app to access ms-identity-javascript-tutorial-c4s1-api as the signed-in user.`
-        - For **User consent display name** type `Access ms-identity-javascript-tutorial-c4s1-api`
-        - For **User consent description** type `Allow the application to access ms-identity-javascript-tutorial-c4s1-api on your behalf.`
-        - Keep **State** as **Enabled**
-        - Click on the **Add scope** button on the bottom to save this scope.
-1. On the right side menu, select the `Manifest` blade.
-   - Set `accessTokenAcceptedVersion` property to **2**.
-   - Click on **Save**.
+    - Click `Set` next to the **Application ID URI** to generate a URI that is unique for this app.
+    - For this sample, accept the proposed Application ID URI (api://{clientId}) by selecting **Save**.
+11. All APIs have to publish a minimum of one [scope](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-authorization-code) for the client's to obtain an access token successfully. To publish a scope, follow the following steps:
+    - Select **Add a scope** button open the **Add a scope** screen and Enter the values as indicated below:
+         - For **Scope name**, use `access_as_user`.
+         - Select **Admins and users** options for **Who can consent?**
+         - For **Admin consent display name** type `Access ms-identity-javascript-tutorial-c4s1-api`
+         - For **Admin consent description** type `Allows the app to access ms-identity-javascript-tutorial-c4s1-api as the signed-in user.`
+         - For **User consent display name** type `Access ms-identity-javascript-tutorial-c4s1-api`
+         - For **User consent description** type `Allow the application to access ms-identity-javascript-tutorial-c4s1-api on your behalf.`
+         - Keep **State** as **Enabled**
+         - Click on the **Add scope** button on the bottom to save this scope.
+12. On the right side menu, select the `Manifest` blade.
+    - Set `accessTokenAcceptedVersion` property to **2**.
+    - Click on **Save**.
 
 #### Configure the service app to use your app registration
 
