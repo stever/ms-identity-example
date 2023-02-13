@@ -25,15 +25,14 @@ This sample demonstrates a Vanilla JavaScript single-page application (SPA) whic
 
 ## Contents
 
-| File/folder           | Description                                                               |
-|-----------------------|---------------------------------------------------------------------------|
-| `App/authPopup.js`    | Main authentication logic resides here (using Popup flow).                |
-| `App/authRedirect.js` | Use this instead of `authPopup.js` for authentication with redirect flow. |
-| `App/authConfig.js`   | Contains configuration parameters for the sample.                         |
-| `SPA/server.js`       | Simple Node server for `index.html`.                                      |
-| `API/process.json`    | Contains configuration parameters for logging via Morgan.                 |
-| `API/index.js`        | Main application logic resides here.                                      |
-| `API/config.json`     | Contains authentication parameters for the sample.                        |
+| File/folder           | Description                                               |
+|-----------------------|-----------------------------------------------------------|
+| `App/authRedirect.js` | Use this for authentication with redirect flow.           |
+| `App/authConfig.js`   | Contains configuration parameters for the sample.         |
+| `SPA/server.js`       | Simple Node server for `index.html`.                      |
+| `API/process.json`    | Contains configuration parameters for logging via Morgan. |
+| `API/index.js`        | Main application logic resides here.                      |
+| `API/config.json`     | Contains authentication parameters for the sample.        |
 
 ## Prerequisites
 
