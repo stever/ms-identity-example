@@ -53,7 +53,7 @@ This sample demonstrates a Vanilla JavaScript single-page application (SPA) that
 From your shell or command line:
 
 ```console
-    git clone https://github.com/Azure-Samples/ms-identity-javascript-tutorial.git
+    git clone https://github.com/stever/ms-identity-example.git
 ```
 
 or download and extract the repository .zip file.
@@ -64,6 +64,7 @@ or download and extract the repository .zip file.
 
 ```console
     cd ms-identity-example
+    git checkout example1
     npm install
 ```
 
