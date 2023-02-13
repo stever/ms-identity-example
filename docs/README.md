@@ -200,10 +200,6 @@ To achieve this, you need to add the **Application Id** of the client app, in th
 
 ![Screenshot](screenshot.png)
 
-## We'd love your feedback!
-
-Were we successful in addressing your learning objective? Consider taking a moment to [share your experience with us](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR73pcsbpbxNJuZCMKN0lURpUNDVHTkg2VVhWMTNYUTZEM05YS1hSN01EOSQlQCN0PWcu).
-
 ## About the code
 
 ### /.default scope and combined consent
